@@ -7,10 +7,10 @@ import lombok.Data;
 public class Pelicula {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer peliculaid;
+    private Integer pelicula_id;
     private String titulo;
     private String genero;
     private String duracion;
     private String imagen;
-    private Boolean disponible = true;
+
 }
