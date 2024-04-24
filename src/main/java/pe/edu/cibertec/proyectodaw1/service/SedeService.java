@@ -6,6 +6,7 @@ import pe.edu.cibertec.proyectodaw1.model.bd.Sede;
 import pe.edu.cibertec.proyectodaw1.repository.SedeRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SedeService implements ISedeService {
@@ -16,5 +17,20 @@ public class SedeService implements ISedeService {
     @Override
     public List<Sede> listarSedes() {
         return sedeRepository.findAll();
+    }
+
+    @Override
+    public void guardarSede(Sede sede) {
+        sedeRepository.save(sede);
+    }
+
+    @Override
+    public void actualizarSede(Sede sede) {
+        sedeRepository.save(sede);
+    }
+
+    @Override
+    public void eliminarSede(int sede_id) {
+        sedeRepository.deleteById(sede_id);
     }
 }

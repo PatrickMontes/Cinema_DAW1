@@ -6,4 +6,7 @@ import java.util.List;
 
 public interface ISedeService {
     List<Sede> listarSedes();
+    void guardarSede(Sede sede);
+    void actualizarSede(Sede sede);
+    void eliminarSede(int sede_id);
 }
