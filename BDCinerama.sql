@@ -32,25 +32,33 @@ CREATE TABLE Peliculas (
     imagen VARCHAR(300) NOT NULL
 );
 
-CREATE TABLE Peliculas (
-    pelicula_id INT PRIMARY KEY AUTO_INCREMENT,
-    titulo VARCHAR(255) NOT NULL,
-    genero VARCHAR(100) NOT NULL,
-    duracion INT NOT NULL,
-    imagen VARCHAR(300) NOT NULL
-);
-
-CREATE TABLE Cines (
-    cine_id INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE Sede (
+    sede_id INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(255) NOT NULL,
     ubicacion VARCHAR(255) NOT NULL
 );
 
+INSERT INTO Sede (nombre, ubicacion) VALUES 
+('Cinerama Pacifico', 'AV JOSE PARDO 121 MIRAFLORES - LIMA - LIMA'),
+('Cinerama Minka', 'AV ARGENTINA 3093 CC MINKA 2DO NIVEL CALLAO - CALLAO - CALLAO'),
+('Cinerama Quinde', 'AV LOS MAESTROS S/N CC EL QUINDE'),
+('Cinerama Tarapoto', 'AV ALFONSO UGARTE 1360 SAN MARTIN - SAN MARTIN - TARAPOTO'),
+('Cinerama Cajamarca', 'JR SOR MANUELA GIL 151 CC EL QUINDE CAJAMARCA- CAJAMARCA - CAJAAMRCA'),
+('Cinerama Sol', 'AV SAN MARTIN 727 CC PLAZA DEL SOL ICA - ICA - ICA'),
+('Cinerama HUacho', 'COLON 601 CC PLAZA DEL SOL 2DO NIVEL'),
+('Cinerama Moyobamba', 'JR MANUEL DEL AGUILA 542 MOYOBAMBA'),
+('Cinerama Cusco', 'CALLE CRUZ VERDE 347 CC IMPERIAL ´PLAZA CUSCO - CUSCO - CUSCO'),
+('Cinerama Chimbote', 'AV. V. RAUL H. DE LA TORRE MZA. B LOTE. 1A SECTOR CAMPO FERIAL SAN P ANCASH SANTA CHIMBOTE');
+
+
+select * from Sede;
+
+
 CREATE TABLE Salas (
       sala_id INT PRIMARY KEY AUTO_INCREMENT,
       nombre VARCHAR(30) NOT NULL,
-      cine_id INT,
-      FOREIGN KEY (cine_id) REFERENCES Cines(cine_id)
+      sede_id INT,
+      FOREIGN KEY (sede_id) REFERENCES Sede(sede_id)
 );
 
 CREATE TABLE Horarios (
