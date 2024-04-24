@@ -29,12 +29,11 @@ CREATE TABLE Peliculas (
     titulo VARCHAR(255) NOT NULL,
     genero VARCHAR(100) NOT NULL,
     duracion INT NOT NULL,
-    imagen VARCHAR(300) NOT NULL,
-    disponible BOOLEAN DEFAULT TRUE
+    imagen VARCHAR(300) NOT NULL
 );
 
-CREATE TABLE Cines (
-    cine_id INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE Sede (
+    sede_id INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(255) NOT NULL,
     ubicacion VARCHAR(255) NOT NULL
 );
