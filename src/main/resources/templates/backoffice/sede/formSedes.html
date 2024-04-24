@@ -38,6 +38,13 @@
                             Actualizar
                         </button>
                     </td>
+                    <td>
+                        <button type="button" class="btn btn-danger btn-sm btnEliminar"
+                                th:attr="data-id=${sede.sede_id}">
+                            Eliminar
+                        </button>
+                    </td>
+
                 </tr>
                 </tbody>
             </table>
@@ -89,7 +96,7 @@
                         <label for="ubicacionActualizar">Ubicación:</label>
                         <input type="text" class="form-control" id="ubicacionActualizar" name="ubicacion" required>
                     </div>
-                    <div class="text-center"> <!-- Div para centrar el botón -->
+                    <div class="text-center">
                         <button type="submit" class="btn btn-primary">Actualizar</button>
                     </div>
                 </form>
@@ -100,17 +107,12 @@
 
 <script>
     $(document).ready(function () {
-        // Mostrar modal de agregar sede
         $("#btnAgregarSede").click(function () {
             $("#agregarSedeModal").modal('show');
         });
-
-        // Cerrar cualquier modal al hacer clic en el botón "Cerrar"
         $(".modal .cerrar").click(function () {
             $(this).closest(".modal").modal('hide');
         });
-
-        // Manejar clic en botón de actualización
         $(".btnActualizar").click(function () {
             var sede_id = $(this).data('id');
             var nombre = $(this).data('nombre');
@@ -122,7 +124,25 @@
 
             $("#actualizarSedeModal").modal('show');
         });
+
+        $(".btnEliminar").click(function () {
+            var sede_id = $(this).data('id');
+            if (confirm("¿Estás seguro de que quieres eliminar esta sede?")) {
+                $.ajax({
+                    type: "POST",
+                    url: "/eliminarSede",
+                    data: { sede_id: sede_id },
+                    success: function () {
+                        location.reload();
+                    },
+                    error: function () {
+                        alert("Ha ocurrido un error al intentar eliminar la sede.");
+                    }
+                });
+            }
+        });
     });
+
 </script>
 
 
