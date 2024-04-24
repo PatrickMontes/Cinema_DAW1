@@ -20,6 +20,7 @@ public class SedeController {
     @Autowired
     private ISedeService sedeService;
 
+    //localhost:8080/listarSedes
     @GetMapping("/listarSedes")
     public String listarSedes(Model model) {
         List<Sede> sedes = sedeService.listarSedes();
