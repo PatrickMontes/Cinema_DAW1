@@ -9,4 +9,6 @@ public interface ISedeService {
     void guardarSede(Sede sede);
     void actualizarSede(Sede sede);
     void eliminarSede(int sede_id);
+
+    Sede obtenerSedePorId(Integer sedeId);
 }

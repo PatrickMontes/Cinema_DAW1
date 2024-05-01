@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Salas</title>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+    <script th:src="@{/js/jquery/jquery.js}" type="text/javascript"></script>
+    <script th:src="@{/js/bootstrap/bootstrap.bundle.js}" type="text/javascript"></script>
+</head>
+<body>
+<h1>Listado de Salas</h1>
+
+<!-- Botón para abrir el modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agregarSalaModal">
+    Agregar Sala
+</button>
+
+<!-- Modal de agregar sala -->
+<div class="modal fade" id="agregarSalaModal" tabindex="-1" role="dialog" aria-labelledby="agregarSalaModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="agregarSalaModalLabel">Agregar Sala</h5>
+            </div>
+            <div class="modal-body">
+                <!-- Formulario para agregar una nueva sala -->
+                <form action="/guardarSala" method="post">
+                    <div class="form-group">
+                        <label for="nombre">Nombre de la Sala:</label>
+                        <input type="text" id="nombre" name="nombre" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sede">Sede:</label>
+                        <select id="sede" name="sedeId" class="form-control" required>
+                            <option value="">Seleccione una sede</option>
+                            <!-- Iterar sobre las sedes para generar opciones -->
+                            <th:block th:each="sede : ${sedes}">
+                                <option th:value="${sede.sede_id}" th:text="${sede.nombre}"></option>
+                            </th:block>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table>
+    <thead>
+    <tr class="table table-bordered">
+        <th>Sala</th>
+        <th>Sede</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="sala : ${salas}">
+        <td th:text="${sala.nombre}"></td>
+        <td th:text="${sala.sede.nombre}"></td>
+        <td>
+            <button type="button" class="btn btn-primary" data-toggle="modal" th:data-target="'#actualizarSalaModal-' + ${sala.sala_id}">
+                Actualizar
+            </button>
+            <form action="/eliminarSala" method="post" style="display: inline;">
+                <input type="hidden" name="id" th:value="${sala.sala_id}" />
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- Script para mostrar el modal -->
+<script>
+    $(document).ready(function(){
+        // Utiliza el atributo data-target como selector para abrir el modal
+        $("[data-target='#agregarSalaModal']").click(function(){
+            $("#agregarSalaModal").modal('show');
+        });
+    });
+</script>
+
+</body>
+</html>

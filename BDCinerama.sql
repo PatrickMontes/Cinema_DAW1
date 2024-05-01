@@ -45,9 +45,9 @@ INSERT INTO Sede (nombre, ubicacion) VALUES
 ('Cinerama Tarapoto', 'AV ALFONSO UGARTE 1360 SAN MARTIN - SAN MARTIN - TARAPOTO'),
 ('Cinerama Cajamarca', 'JR SOR MANUELA GIL 151 CC EL QUINDE CAJAMARCA- CAJAMARCA - CAJAAMRCA'),
 ('Cinerama Sol', 'AV SAN MARTIN 727 CC PLAZA DEL SOL ICA - ICA - ICA'),
-('Cinerama HUacho', 'COLON 601 CC PLAZA DEL SOL 2DO NIVEL'),
+('Cinerama Huacho', 'COLON 601 CC PLAZA DEL SOL 2DO NIVEL'),
 ('Cinerama Moyobamba', 'JR MANUEL DEL AGUILA 542 MOYOBAMBA'),
-('Cinerama Cusco', 'CALLE CRUZ VERDE 347 CC IMPERIAL ´PLAZA CUSCO - CUSCO - CUSCO'),
+('Cinerama Cusco', 'CALLE CRUZ VERDE 347 CC IMPERIAL Â´PLAZA CUSCO - CUSCO - CUSCO'),
 ('Cinerama Chimbote', 'AV. V. RAUL H. DE LA TORRE MZA. B LOTE. 1A SECTOR CAMPO FERIAL SAN P ANCASH SANTA CHIMBOTE');
 
 
@@ -60,6 +60,20 @@ CREATE TABLE Salas (
       sede_id INT,
       FOREIGN KEY (sede_id) REFERENCES Sede(sede_id)
 );
+
+INSERT INTO Salas (nombre, sede_id) VALUES ('Sala 1', 1);
+INSERT INTO Salas (nombre, sede_id) VALUES ('Sala 2', 2);
+INSERT INTO Salas (nombre, sede_id) VALUES ('Sala 3', 3);
+INSERT INTO Salas (nombre, sede_id) VALUES ('Sala 4', 4);
+INSERT INTO Salas (nombre, sede_id) VALUES ('Sala 5', 5);
+INSERT INTO Salas (nombre, sede_id) VALUES ('Sala 6', 6);
+INSERT INTO Salas (nombre, sede_id) VALUES ('Sala 7', 7);
+INSERT INTO Salas (nombre, sede_id) VALUES ('Sala 8', 8);
+INSERT INTO Salas (nombre, sede_id) VALUES ('Sala 9', 9);
+INSERT INTO Salas (nombre, sede_id) VALUES ('Sala 10', 10);
+
+
+select * from Salas;
 
 CREATE TABLE Horarios (
     horario_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -83,9 +97,11 @@ CREATE TABLE Reservas (
     reserva_id INT PRIMARY KEY AUTO_INCREMENT,
     usuario_id INT,
     horario_id INT,
+    asiento_id  INT,
     estado_reserva ENUM('Confirmada', 'Cancelada') DEFAULT 'Confirmada',
     fecha_reserva TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (usuario_id) REFERENCES Usuarios(usuario_id),
+    FOREIGN KEY (asiento_id) REFERENCES Asientos(asiento_id),
     FOREIGN KEY (horario_id) REFERENCES Horarios(horario_id)
 );
 
@@ -95,12 +111,4 @@ CREATE TABLE Pago (
     monto DECIMAL(10, 2) NOT NULL,
     fecha_pago TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (reserva_id) REFERENCES Reservas(reserva_id)
-);
-
-CREATE TABLE Asientos_Reservados (
-    asiento_reservado_id INT PRIMARY KEY AUTO_INCREMENT,
-    reserva_id INT,
-    asiento_id INT,
-    FOREIGN KEY (reserva_id) REFERENCES Reservas(reserva_id),
-    FOREIGN KEY (asiento_id) REFERENCES Asientos(asiento_id)
 );
