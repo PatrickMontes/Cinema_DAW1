@@ -16,9 +16,7 @@
   <div class="row">
     <div class="col">
       <h1 class="text-center">Lista de Películas</h1>
-      <button type="button" id="btnAgregarPelicula" class="btn btn-primary" data-toggle="modal" data-target="#agregarPeliculaModal">
-        Agregar Película
-      </button>
+      <a href="/pelicula/pelicula_Register" class="btn btn-primary">Insertar</a>
 
       <br>
       <table class="table">
@@ -42,93 +40,17 @@
           <td th:text="${pelicula.duracion}"></td>
 
           <td>
-            <button  type="button" class="btn btn-primary btnactualizar"
-                     th:data-peltitulo="${pelicula.titulo}"
-                     th:data-pelgenero="${pelicula.genero}"
-                     th:data-pelduracion="${pelicula.duracion}"
-                     th:data-pelimagen="${pelicula.imagen}"
-
-            >Actualizar</button>
-            </td>
+            <a th:href="@{/pelicula/editar/{id}(id=${pelicula.pelicula_id})}" class="btn btn-primary">Actualizar</a>
+            <a class="btn btn-danger" th:href="@{/pelicula/peliculas/{id}(id=${pelicula.pelicula_id})}">Eliminar</a>
         </tr>
+
+
         </tbody>
       </table>
     </div>
   </div>
 </div>
-<!-- Modal ACTUALIZAR -->
-<div class="modal fade" id="modalPelicula" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Pelicula</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form method="post" action="/pelicula/guardar" enctype="multipart/form-data">
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="txttitulo" name="titulo">
-            <label for="txttitulo">Ingrese el Título de la Película</label>
-          </div>
 
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="txtgenero" name="genero">
-            <label for="txtgenero">Ingrese el Género de la Película</label>
-          </div>
-
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="txtduracion" name="duracion">
-            <label for="txtduracion">Ingrese la Duración de la Película</label>
-          </div>
-
-          <div class="form-group mb-3">
-            <label for="imagen" class="mb-2">Imagen:</label>
-            <input type="file" class="form-control-file" id="imagenes" name="file" accept="image/*" required>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="submit" class="btn btn-primary">Guardar</button>
-          </div>
-        </form>
-      </div>
-
-
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="agregarPeliculaModal" tabindex="-1" aria-labelledby="agregarPeliculaModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="agregarPeliculaModalLabel">Agregar Película</h5>
-      </div>
-      <div class="modal-body">
-        <form method="post" action="/pelicula/guardar" enctype="multipart/form-data">
-          <div class="form-group">
-            <label for="titulo">Título:</label>
-            <input type="text" class="form-control" id="titulo" name="titulo" required>
-          </div>
-          <div class="form-group">
-            <label for="genero">Género:</label>
-            <input type="text" class="form-control" id="genero" name="genero" required>
-          </div>
-          <div class="form-group">
-            <label for="duracion">Duración:</label>
-            <input type="text" class="form-control" id="duracion" name="duracion" required>
-          </div>
-          <div class="form-group">
-            <label for="imagen">Imagen:</label>
-            <input type="file" class="form-control-file" id="imagen" name="file" accept="image/*" required>
-          </div>
-          <button type="submit" class="btn btn-primary">Guardar</button>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn cerrar btn-secondary" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 

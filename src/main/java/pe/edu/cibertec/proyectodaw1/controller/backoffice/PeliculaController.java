@@ -17,6 +17,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Optional;
 
 
 @AllArgsConstructor
@@ -30,6 +31,13 @@ public class PeliculaController {
     public String formpelicula(Model model){
         model.addAttribute("peliculas", iPeliculaService.listarPeliculas());
         return "backoffice/pelicula/formpelicula";
+    }
+
+
+    @GetMapping("/pelicula_Register")
+    public String formregisterPelicula(Model model){
+        model.addAttribute("pelicula", new Pelicula());
+        return "backoffice/pelicula/formRegisterPelicula";
     }
     @PostMapping("/guardar")
     public String guardar(@ModelAttribute Pelicula pelicula, BindingResult result, Model model,
@@ -65,6 +73,35 @@ public class PeliculaController {
             attribute.addFlashAttribute("error", "Hubo un error al guardar la película.");
         }
 
+        return "redirect:/pelicula/listar";
+    }
+    @GetMapping("/editar/{id}")
+    public String formEditarPelicula(@PathVariable Integer id, Model model){
+        Pelicula pelicula = iPeliculaService.buscarPeliculaPorId(id);
+        if (pelicula != null) {
+            model.addAttribute("pelicula", pelicula);
+            return "backoffice/pelicula/formeditarpelicula";
+        } else {
+            // Manejar el caso donde la película no existe
+            return "redirect:/pelicula/listar"; // O mostrar un mensaje de error, etc.
+        }
+    }
+
+    @PostMapping("/actualizar/{id}")
+    public String actualizarPelicula(@PathVariable Integer id, @ModelAttribute("pelicula") Pelicula pelicula, RedirectAttributes attribute) {
+        Pelicula peliculaExistente = iPeliculaService.buscarPeliculaPorId(id);
+        peliculaExistente.setTitulo(pelicula.getTitulo());
+        peliculaExistente.setGenero(pelicula.getGenero());
+        peliculaExistente.setDuracion(pelicula.getDuracion());
+        peliculaExistente.setImagen(pelicula.getImagen());
+
+        iPeliculaService.guardarPelicula(peliculaExistente);
+        // Redirigir al usuario a la lista de películas
+        return "redirect:/pelicula/listar";
+    }
+    @GetMapping("/peliculas/{id}")
+    public String eliminarPelicula(@PathVariable Integer id){
+        iPeliculaService.eliminarPelicula(id);
         return "redirect:/pelicula/listar";
     }
     @GetMapping("/get")
