@@ -7,8 +7,6 @@ import java.util.List;
 public interface ISalaService {
     List<Sala> listarSalas();
     void guardarSala(Sala sala);
-    void actualizarSala(Sala sala);
-    void eliminarSala(int sala_id);
-
     void eliminarSalaPorId(Integer id);
+    Sala obtenerSalaPorId(Integer salaId);
 }

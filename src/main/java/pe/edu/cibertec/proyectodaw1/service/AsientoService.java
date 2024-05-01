@@ -13,8 +13,21 @@ public class AsientoService implements IAsientoService {
     @Autowired
     private AsientoRepository asientoRepository;
 
+    @Autowired
+    private SalaService salaService;
+
     @Override
     public List<Asiento> listarAsientos() {
         return asientoRepository.findAll();
+    }
+
+    @Override
+    public void agregarAsiento(Asiento asiento) {
+        asientoRepository.save(asiento);
+    }
+
+    @Override
+    public void eliminarAsientoPorId(Integer id) {
+        asientoRepository.deleteById(id);
     }
 }
