@@ -14,12 +14,5 @@ public class AsientoController {
 
     @Autowired
     private IAsientoService asientoService;
-
-    @GetMapping("/listarAsientos")
-    public String listarAsientos(Model model) {
-        List<Asiento> asientos = asientoService.listarAsientos();
-        model.addAttribute("asientos", asientos);
-        return "backoffice/asiento/formAsientos";
-    }
 }
 
