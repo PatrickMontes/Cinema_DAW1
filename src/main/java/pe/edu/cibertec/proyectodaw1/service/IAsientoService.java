@@ -7,6 +7,4 @@ import java.util.List;
 
 public interface IAsientoService {
     List<Asiento> listarAsientos();
-    void agregarAsiento(Asiento asiento);
-    void eliminarAsientoPorId(Integer id);
 }

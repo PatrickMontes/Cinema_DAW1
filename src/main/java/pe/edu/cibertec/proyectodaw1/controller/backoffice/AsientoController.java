@@ -23,11 +23,4 @@ public class AsientoController {
         model.addAttribute("asientos", asientos);
         return "backoffice/asientos/formAsientos";
     }
-
-
-    @PostMapping("/eliminarAsiento")
-    public String eliminarAsiento(@RequestParam("id") Integer id) {
-        asientoService.eliminarAsientoPorId(id);
-        return "redirect:/backoffice/listarAsientos";
-    }
 }
