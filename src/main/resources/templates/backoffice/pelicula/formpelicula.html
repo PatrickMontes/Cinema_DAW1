@@ -1,26 +1,117 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
   <title>Lista de Películas</title>
-  <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
-  <script th:src="@{/js/jquery/jquery.js}" type="text/javascript"></script>
-  <script th:src="@{/js/web/backoffice/pelicula/formpelicula.js}" type="text/javascript"></script>
-  <script th:src="@{/js/bootstrap/bootstrap.bundle.js}" type="text/javascript"></script>
+  <link th:href="@{/css/pelicula.css}" rel="stylesheet" />
   <style>
   </style>
 </head>
+<style>
+
+</style>
 <body>
+<div class="admin-dashboard">
 
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h1 class="text-center">Lista de Películas</h1>
-      <a href="/pelicula/pelicula_Register" class="btn btn-primary">Insertar</a>
+  <div class="ds-left-menu">
 
+    <button class="btn-menu">
+      <ion-icon name="chevron-back-circle"></ion-icon>
+    </button>
+
+    <div class="ds-perfil">
+      <div class="foto">
+        <ion-icon name="person-circle"></ion-icon>
+      </div>
+      <div class="info-perfil">
+        <h3>CINERAMA</h3>
+      </div>
+    </div>
+
+    <div class="line"></div>
+
+    <div class="ds-menu">
+      <ul div="menu-list">
+        <li class="active">
+            <a href="/inicio/index" >
+            <div class="icon">
+              <ion-icon name="home"></ion-icon>
+            </div>
+            <div class="text">
+              <span>Home</span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="/pelicula/listar">
+            <div class="icon">
+              <ion-icon name="construct-outline"></ion-icon>
+            </div>
+            <div class="text">
+              <span>Peliculas</span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="/listarSalas">
+            <div class="icon">
+              <ion-icon name="folder-open-outline"></ion-icon>
+            </div>
+            <div class="text">
+              <span>Salas</span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="/listarSedes">
+            <div class="icon">
+              <ion-icon name="hammer-outline"></ion-icon>
+            </div>
+            <div class="text">
+              <span>Sedes</span>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="line-two"></div>
+
+    <div class="sign-off">
+					<span sec:authorize="isAuthenticated">
+					   <a th:href="@{/logout}" class="btn-sign-off">
+						   <div class="icon">
+						       <ion-icon name="log-out-outline"></ion-icon>
+						   </div>
+						   <div class="text">
+						      <span>Logout</span>
+						   </div>
+					   </a>
+					</span>
+    </div>
+
+  </div>
+
+  <div class="ds-panel">
+
+    <div class="panel-header">
+      <div class="icono">
+        <ion-icon name="hammer-outline"></ion-icon>
+      </div>
+      <h2>Mantenimiento de Peliculas </h2>
+    </div>
+
+
+
+
+    <div class="table-container">
+      <a href="/pelicula/pelicula_Register" class="btn-create">Insertar</a>
       <br>
+      <br>
+
+
       <table class="table">
-        <thead class="bg-dark text-white">
+        <thead >
         <tr>
           <th scope="col">Imagen</th>
           <th scope="col">Título</th>
@@ -40,19 +131,58 @@
           <td th:text="${pelicula.duracion}"></td>
 
           <td>
-            <a th:href="@{/pelicula/editar/{id}(id=${pelicula.pelicula_id})}" class="btn btn-primary">Actualizar</a>
-            <a class="btn btn-danger" th:href="@{/pelicula/peliculas/{id}(id=${pelicula.pelicula_id})}">Eliminar</a>
-        </tr>
+            <a th:href="@{/pelicula/editar/{id}(id=${pelicula.pelicula_id})}" class="btn btn-primary btn-edit">
+              <ion-icon name="create"></ion-icon>
+            </a>
+            <a class="btn btn-delete btn-danger" th:href="@{/pelicula/peliculas/{id}(id=${pelicula.pelicula_id})}">
+              <ion-icon name="trash"></ion-icon>
+            </a>
+          </td>
 
 
         </tbody>
       </table>
     </div>
+
   </div>
+
+
 </div>
 
 
-
-
 </body>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script>
+  let btnmenu = document.querySelector('.btn-menu');
+  let dsleftmenu = document.querySelector('.ds-left-menu');
+  let line = document.querySelector('.line');
+  let linetwo = document.querySelector('.line-two');
+  let infoperfil = document.querySelector('.info-perfil');
+
+  btnmenu.onclick = function () {
+      btnmenu.classList.toggle('rotate');
+      dsleftmenu.classList.toggle('active');
+      line.classList.toggle('short');
+      linetwo.classList.toggle('short');
+      infoperfil.classList.toggle('hidden');
+  }
+
+  let menulist = document.querySelectorAll('.ds-menu ul li');
+  function activeLink() {
+
+      menulist.forEach((item) =>
+          item.classList.remove('active'));
+      this.classList.add('active')
+  }
+
+
+  menulist.forEach((item) =>
+      item.addEventListener('click', activeLink));
+
+
+
+</script>
+
 </html>

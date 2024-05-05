@@ -1,0 +1,462 @@
+  @import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+  *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+  }
+
+  ::selection {
+      background-color: transparent;
+  }
+
+  :root{
+      --green: #6db23e;
+      --bg: #1b1e22;
+      --container: #262a2d;
+      --white: #fffefe;
+  }
+
+  body{
+      background-color: var(--bg);
+      overflow: hidden;
+  }
+
+  ul{
+      list-style: none;
+  }
+
+  a{
+      text-decoration: none;
+  }
+
+  .admin-dashboard{
+      position: relative;
+      display: flex;
+  }
+
+  .ds-left-menu{
+      background:#2255c5;
+      height: 100vh;
+      color: #fff;
+      width: 85px;
+      position: relative;
+      padding-left: 13px;
+      transition: 0.5s;
+  }
+
+  .ds-left-menu.active{
+      width: 300px;
+      padding: 0px 0px 0px 20px;
+  }
+
+  .btn-menu{
+      position: absolute;
+      background: black;
+      color: #fff;
+      width: 35px;
+      height: 35px;
+      line-height: 35px;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 50%;
+      border: none;
+      top: 110px;
+      right: -16px;
+      font-size: 16px;
+      z-index: 100;
+      transition: 0.8s;
+  }
+
+  .btn-menu.rotate{
+      transform: rotate(180deg);
+      transition: 0.8s;
+  }
+
+  .btn-menu ion-icon{
+      width: 70%;
+      height: 70%;
+      position: relative;
+      border-radius: 50%;
+      top: 5px;
+  }
+
+  .ds-menu{
+      width: 100%;
+      overflow-x: scroll;
+      height: 100%;
+      padding-bottom: 150px;
+      padding-top: 50px;
+  }
+
+  .ds-menu ul li{
+      position: relative;
+  }
+
+  .ds-menu ul li.active{
+      background-color: var(--bg);
+      border-top-left-radius: 50px;
+      border-bottom-left-radius: 50px;
+  }
+
+  .ds-menu ul li.active::before{
+      content: '';
+      position: absolute;
+      top: -20px;
+      right: 0;
+      width: 20px;
+      height: 20px;
+      border-bottom-right-radius: 20px;
+      box-shadow: 5px 5px 0px 5px var(--bg);
+      background-color: transparent;
+  }
+
+  .ds-menu ul li.active::after{
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      right: 0;
+      width: 20px;
+      height: 20px;
+      border-top-right-radius: 20px;
+      box-shadow: 5px -2px 0px 2px var(--bg);
+      background-color: transparent;
+
+  }
+
+  .ds-menu ul li a{
+      cursor: pointer;
+      background: transparent;
+      display: flex;
+      white-space: nowrap;
+      text-decoration: none;
+  }
+
+  .ds-menu ul li a .icon {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 60px;
+      padding-left: 1px;
+      height: 65px;
+      font-size: 1.5em;
+      color: var(--white);
+      transition: 0.5s;
+  }
+
+  .ds-menu ul li a .text{
+      position: relative;
+      height: 65px;
+      display: flex;
+      align-items: center;
+      font-size: 1em;
+      color: var(--white);
+      padding-left: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: 0.5s;
+  }
+
+  .ds-menu ul li.active a .icon {
+      color: var(--white);
+  }
+
+  .ds-menu ul li.active a .text{
+      color: white;
+  }
+
+  .ds-menu ul li:hover a .icon,
+  .ds-menu ul li:hover a .text{
+      color: #6db23e;
+  }
+
+  .ds-menu ul li.active a .icon::before{
+      content: '';
+      position: absolute;
+      inset: 5px;
+      width: 55px;
+      background-color: black;
+      border-radius: 50%;
+      transition: 0.5s;
+  }
+
+  .ds-menu ul li:hover.active a .icon::before{
+      background-color: var(--white);
+  }
+
+  .ds-perfil{
+      transition: 0.5s;
+      display: flex;
+      align-items: center;
+      padding: 20px 2px 40px 5px;
+  }
+
+  .ds-perfil .foto{
+      position: relative;
+      width: 50px;
+      height: 50px;
+      transition: 0.5s;
+      border-radius: 50%;
+      border: 3px solid #525252;
+  }
+
+  .ds-perfil .foto::after{
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: green;
+      bottom: 0;
+      right: 0;
+      border-radius: 50%;
+  }
+
+  .ds-perfil .foto ion-icon{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+  }
+
+  .ds-perfil .info-perfil{
+      transition: 0.5s;
+      display: none;
+  }
+
+  .ds-perfil .info-perfil.hidden{
+      transition: 1s ;
+      display: flex;
+      padding-left: 20px;
+  }
+
+  .ds-perfil .info-perfil.hidden span{
+      font-size: 12px;
+      color: #bcbcbd;
+  }
+
+  .ds-perfil .info-perfil h3{
+      font-size: 1.2em;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      font-weight: 500;
+      margin-top: -5px;
+  }
+
+  .sign-off{
+      position: absolute;
+      bottom: 0;
+      width: 80%;
+      display: flex;
+      padding-bottom: 35px;
+      overflow: hidden;
+  }
+
+  .sign-off a{
+      background: transparent;
+      display: flex;
+      white-space: nowrap;
+      color: var(--white);
+      margin-top: 100px;
+  }
+
+  .sign-off a:hover .icon,
+  .sign-off a:hover .text
+  {
+      color: black;
+      transition: 0.5s;
+  }
+
+  .sign-off a .icon{
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 60px;
+      height: 50px;
+      font-size: 1.6em;
+      color: var(--white);
+      transition: 0.5s;
+  }
+
+  .sign-off a .text{
+      position: relative;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      font-size: 1em;
+      color: var(--white);
+      padding-left: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: 0.5s;
+  }
+
+  .line{
+      background-color: #606064;
+      position: relative;
+      width: 80%;
+      top: -25px;
+      height: 1px;
+  }
+
+  .line.short{
+      background-color: #606064;
+      position: relative;
+      width: 100%;
+      top: -25px;
+      height: 1px;
+  }
+
+  .line-two{
+      width: 70%;
+      height: 1px;
+      background-color: #606064;
+      position: absolute;
+      bottom: 100px;
+  }
+
+  .line-two.short{
+      width: 85%;
+      height: 1px;
+      background-color: #606064;
+      position: absolute;
+      bottom: 100px;
+  }
+
+  /*===================================
+    ESTILOS PANEL RIGHT
+  ===================================*/
+  .ds-panel{
+    width: calc(100%);
+    padding: 20px 30px 20px 40px;
+    background: white;
+  }
+
+  .ds-panel .panel-header{
+    width: 100%;
+    background: var(--container);
+    padding: 8px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .ds-panel .panel-header .icono{
+    width: 50px;
+    inset: 10;
+    border-radius: 10px;
+    text-align: center;
+    padding: 6px 0px 0px 0px;
+    font-size: 1.7em;
+    margin-right: 20px;
+    color: var(--white);
+    background: black;
+  }
+
+  .ds-panel .panel-header h2{
+    font-size: 1.7em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--white);
+  }
+
+  /****************************/
+
+
+  .btn {
+      display: inline-block;
+      width: 25%; /* Aumentar el ancho */
+      height: 35px; /* Aumentar la altura */
+      border-radius: 35px; /* Aumentar el radio del borde */
+      margin: 2rem 0;
+      font-size: 1.4rem; /* Aumentar el tamaño de la fuente */
+      outline: none;
+      border: none;
+      background: #3498db; /* Cambiar el color de fondo */
+      color: #FFF;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      transition: background-color 0.3s, color 0.3s;
+      text-align: center;
+      margin-right: 10px;
+  }
+
+  .btn.btn-delete {
+      background: #e74c3c; /* Cambiar el color de fondo para los botones de eliminación */
+  }
+
+  .btn:hover {
+      background-position: right;
+  }
+
+  .btn:hover {
+      background: #2980b9; /* Cambiar el color de fondo al pasar el ratón */
+  }
+
+  .btn-create {
+      display: inline-block;
+      width: 150px;
+      height: 40px;
+      border-radius: 20px;
+      background-color: #3498db;
+      color: #fff;
+      text-align: center;
+      line-height: 40px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: background-color 0.3s, color 0.3s;
+
+  }
+
+  .btn-create:hover {
+      background-color: #2980b9; /* Color de fondo del botón al pasar el ratón */
+  }
+  /**********TABLE****************/
+
+    .table-container h2{
+        margin-bottom: 0.8rem;
+        color: black;
+  }
+
+  .table-container table {
+      background: white;
+      width: 100%;
+      border-radius: 2rem;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 300ms ease;
+      border: 1px solid #ccc;
+  }
+
+  table thead th{
+        color: blue;
+        padding: 15px;
+         border-bottom: 1px solid #ccc;
+  }
+
+  table tbody td{
+        height: 2.8rem;
+        color: black;
+  }
+
+  table tbody tr .primary a{
+        padding: 7px;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: var(--green);
+  }
+
+  table tbody tr .primary a:hover{
+        width: 30px;
+        height: 50px;
+        background-color: var(--green);
+        border-radius: 10px;
+        color: var(--white);
+  }
