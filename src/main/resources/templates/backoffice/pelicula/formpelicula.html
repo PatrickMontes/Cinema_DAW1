@@ -1,9 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
+      xmlns="http://www.w3.org/1999/html">
 <head>
   <meta charset="UTF-8">
   <title>Lista de Películas</title>
   <link th:href="@{/css/pelicula.css}" rel="stylesheet" />
+  <link th:href="@{/css/sweetalert2.css}" rel="stylesheet" />
+  <script th:href="@{/js/sweetalert2/sweetalert2.js}"></script>
+  <script th:href="@{/js/web/backoffice/pelicula/formpelicula.js}"></script>
+  <script th:href="@{/js/jquery/jquery.js}"></script>
   <style>
   </style>
 </head>
@@ -24,7 +29,8 @@
         <ion-icon name="person-circle"></ion-icon>
       </div>
       <div class="info-perfil">
-        <h3>CINERAMA</h3>
+        <h3 th:text="${session.nomusuario}"></h3>
+        <h3 th:text="${session.nomrol}"></h3>
       </div>
     </div>
 
@@ -131,7 +137,7 @@
           <td th:text="${pelicula.duracion}"></td>
 
           <td>
-            <a th:href="@{/pelicula/editar/{id}(id=${pelicula.pelicula_id})}" class="btn btn-primary btn-edit">
+            <a onclick="confirmarDelete()" th:href="@{/pelicula/editar/{id}(id=${pelicula.pelicula_id})}" class="btn btn-primary btn-edit">
               <ion-icon name="create"></ion-icon>
             </a>
             <a class="btn btn-delete btn-danger" th:href="@{/pelicula/peliculas/{id}(id=${pelicula.pelicula_id})}">

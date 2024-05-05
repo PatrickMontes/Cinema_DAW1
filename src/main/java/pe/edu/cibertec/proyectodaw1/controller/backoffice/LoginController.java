@@ -21,16 +21,18 @@ public class LoginController {
         return "backoffice/auth/frmlogin";
     }
     @GetMapping("/login-success")
-    public String loginSuccess(){
-        return "redirect:/inicio/index";
-    }
-    @GetMapping("/dashboard")
-    public String dashboard(HttpServletRequest request){
+    public String loginSuccess(HttpServletRequest request){
         HttpSession session = request.getSession();
         UserDetails userDetails = (UserDetails) SecurityContextHolder
                 .getContext().getAuthentication().getPrincipal();
         UsuarioSecurity usuarioSecurity = (UsuarioSecurity) userDetails;
         session.setAttribute("nomusuario", usuarioSecurity.getNombre());
+        session.setAttribute("nomrol",usuarioSecurity.getAuthorities());
+        return "redirect:/inicio/index";
+    }
+    @GetMapping("/dashboard")
+    public String dashboard(){
+
         return "redirect:/inicio/index";
     }
 }
