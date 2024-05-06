@@ -9,6 +9,5 @@ public class UsuarioRequest {
     private String password;
     private String nombres;
     private String apellidos;
-    private Boolean activo;
     private String email;
 }

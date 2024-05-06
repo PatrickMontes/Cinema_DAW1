@@ -25,12 +25,12 @@ public class UsuarioService implements IUsuarioService {
     }
 
     @Override
-    public Usuario guardarUsuario(Usuario usuario) {
+    public Usuario guardarUsuario(Usuario usuario , String nomrol) {
         usuario.setPassword(bCryptPasswordEncoder.encode(
                 usuario.getPassword()));
         usuario.setActivo(true);
 
-        Rol usuarioRol = rolRepository.findByNomrol("Administrador");
+        Rol usuarioRol = rolRepository.findByNomrol(nomrol);
         usuario.setRoles(new HashSet<>(Arrays.asList(usuarioRol)));
         return usuarioRepository.save(usuario);
     }

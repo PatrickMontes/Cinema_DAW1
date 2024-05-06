@@ -25,6 +25,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         auth ->
                                 auth.requestMatchers("/auth/login",
+                                                "/usuario/frmRegister",
+                                                "/usuario/guardarUsuario",
                                                 "/resources/**",
                                                 "/static/**",
                                                 "/css/**",
@@ -32,7 +34,7 @@ public class SecurityConfig {
                                                 )
                                         .permitAll()
                                         .requestMatchers("/pelicula/**","/asiento/**","/listarSedes","/listarSalas").hasAnyAuthority("Administrador")
-                                        .requestMatchers("/inicio/**").hasAnyAuthority("Usuario","Administrador")
+                                        .requestMatchers("/inicio/**","/usuario/***").hasAnyAuthority("Usuario","Administrador")
                                         .anyRequest()
                                         .authenticated()
                 )

@@ -6,7 +6,8 @@ import java.util.List;
 
 public interface IUsuarioService {
     Usuario findUserByNomUsuario(String nomusuario);
-    Usuario guardarUsuario(Usuario usuario);
+    Usuario guardarUsuario(Usuario usuario , String nomrol);
+
     List<Usuario> listarUsuarios();
     Usuario obtenerUsuarioxId(int id);
     void actualizarUsuario(Usuario usuario);

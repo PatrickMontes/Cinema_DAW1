@@ -10,8 +10,8 @@
 <body>
 <div class="login-container">
         <form th:action="@{/auth/login}" method="post">
-            <img src="https://e7.pngegg.com/pngimages/376/171/png-clipart-computer-icons-user-account-login-login-logo-vector-icons.png" alt="avatar" class="avatar-container">
-            <h2>Bienvenido</h2>
+
+            <h2>Bienv<span>enido</span></h2>
             <div class="input-div one">
                 <div class="i">
                     <i class="fas fa-envelope"></i>
@@ -31,7 +31,8 @@
                 </div>
             </div>
             <input type="submit" class="btn" value="Login">
-            <span class="msg">¿No tienes una cuenta? <a href="">Registrate</a></span>
+
+            <span class="msg">¿No tienes una cuenta? <a th:href="@{/usuario/frmRegister}">Registrate</a></span>
         </form>
 </div>
 

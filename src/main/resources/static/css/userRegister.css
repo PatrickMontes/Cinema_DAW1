@@ -1,4 +1,4 @@
-* {
+   * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -7,11 +7,13 @@
 ::selection {
       background-color: transparent;
 }
+
 body {
       font-family: 'Poppins', sans-serif;
       background: #232526;  /* fallback for old browsers */
-      background: -webkit-linear-gradient(to right, #414345, #232526);
-      background: linear-gradient(to right, #414345, #232526);
+      background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
       display: flex;
       justify-content: center;
       align-items: center;
@@ -20,8 +22,9 @@ body {
 }
 
 .login-container {
+      margin-top: 20px;
       width: 500px;
-      height: 500px;
+      height: 630px;
       border-radius: 40px;
       background: #262a2d;
       position: absolute;
@@ -60,7 +63,7 @@ color:yellow;
       display: grid;
       grid-template-columns: 10% 98%;
       margin: 24px 0;
-      padding: 5px 0;
+      padding: 7px 0;
       border-bottom: 2px solid #fffefe;
 }
 
@@ -70,7 +73,7 @@ color:yellow;
       bottom: -2px;
       width: 0;
       height: 2px;
-      background-color: #2255c5;
+      background-color: #041940;
       transition: .3s;
 }
 
@@ -83,7 +86,7 @@ color:yellow;
 }
 
 .input-div.focus .i i{
-      color: #6db23e;
+      color: yellow;
       font-size: 16px;
 }
 
@@ -101,6 +104,10 @@ color:yellow;
 }
 
 .input-div.two{
+      margin-bottom: 4px;
+}
+
+.input-div.three{
       margin-bottom: 4px;
 }
 
@@ -169,13 +176,13 @@ color:yellow;
 
 .msg{
       position: absolute;
-      top: 433px;
+      top: 525px;
       left: 95px;
       color: #fffefe;
 }
 
 .msg a{
-      color: #2255c5;
+      color:#2255c5;
       font-weight: 800;
       text-transform: uppercase;
       text-decoration: none;
