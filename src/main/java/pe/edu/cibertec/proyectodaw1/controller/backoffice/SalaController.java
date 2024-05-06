@@ -33,7 +33,7 @@ public class SalaController {
         Sala sala = new Sala();
         sala.setNombre(salaRequest.getNombre());
 
-        // Aquí asumo que en SalaRequest tienes el ID de la sede al que pertenece la sala
+
         Sede sede = sedeService.obtenerSedePorId(salaRequest.getSedeId());
         sala.setSede(sede);
 

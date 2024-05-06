@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/userRegister.css}" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+</head>
+<body>
+<div class="login-container">
+    <form th:action="@{/usuario/guardarUsuario}" method="post" th:object="${usuarioRequest}">
+        <h2>Reg<span>ist</span>rar</h2>
+        <div class="input-div one">
+            <div class="i">
+                <i class="fas fa-user"></i>
+            </div>
+            <div>
+                <h6><label for="nomusuario">Usuario</label></h6>
+                <input th:field="*{nomusuario}" type="text" id="nomusuario" name="nomusuario" class="input">
+            </div>
+        </div>
+        <div class="input-div two">
+            <div class="i">
+                <i class="fas fa-envelope"></i>
+            </div>
+            <div>
+                <h6><label for="email">Email</label></h6>
+                <input th:field="*{email}"  type="email" id="email" name="email" class="input">
+            </div>
+        </div>
+        <div class="input-div three">
+            <div class="i">
+                <i class="fas fa-lock"></i>
+            </div>
+            <div>
+                <h6><label for="password">Password</label></h6>
+                <input th:field="*{password}"  type="password" id="password" name="password" class="input">
+            </div>
+        </div>
+        <div class="input-div one">
+            <div class="i">
+                <i class="fas fa-user"></i>
+            </div>
+            <div>
+                <h6><label for="nombres">Nombres</label></h6>
+                <input th:field="*{nombres}" type="text" id="nombres" name="nombres"  class="input">
+            </div>
+        </div>
+
+        <div class="input-div two">
+            <div class="i">
+                <i class="fas fa-envelope"></i>
+            </div>
+            <div>
+                <h6><label for="apellidos">Apellidos</label></h6>
+                <input th:field="*{apellidos}" type="text" id="apellidos" name="apellidos" class="input">
+            </div>
+        </div>
+        <input type="submit" class="btn" value="REGISTRAR">
+        <span class="msg">¿Ya tienes una cuenta? <a href="/auth/login">Inicia Sesión</a></span>
+    </form>
+</div>
+
+</body>
+<script>
+    const forms = document.querySelectorAll('input');
+
+    function focusFuncion(){
+          let parent = this.parentNode.parentNode;
+          parent.classList.add('focus');
+    }
+
+    function quitarFuncion(){
+          let parent = this.parentNode.parentNode;
+          if(this.value == ""){
+                parent.classList.remove('focus');
+          }
+    }
+
+    forms.forEach(input => {
+          input.addEventListener('focus', focusFuncion);
+          input.addEventListener('blur', quitarFuncion);
+    });
+
+</script>
+</html>

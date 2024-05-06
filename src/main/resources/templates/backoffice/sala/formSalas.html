@@ -60,9 +60,6 @@
         <td th:text="${sala.nombre}"></td>
         <td th:text="${sala.sede.nombre}"></td>
         <td>
-            <button type="button" class="btn btn-primary" data-toggle="modal" th:data-target="'#actualizarSalaModal-' + ${sala.sala_id}">
-                Actualizar
-            </button>
             <form action="/eliminarSala" method="post" style="display: inline;">
                 <input type="hidden" name="id" th:value="${sala.sala_id}" />
                 <button type="submit" class="btn btn-danger">Eliminar</button>

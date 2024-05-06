@@ -24,18 +24,12 @@ public class SalaService implements ISalaService {
     }
 
     @Override
-    public void actualizarSala(Sala sala) {
-        salaRepository.save(sala);
-    }
-
-    @Override
-    public void eliminarSala(int sala_id) {
-        salaRepository.deleteById(sala_id);
-
-    }
-
-    @Override
     public void eliminarSalaPorId(Integer id) {
         salaRepository.deleteById(id);
+    }
+
+    @Override
+    public Sala obtenerSalaPorId(Integer salaId) {
+        return salaRepository.findById(salaId).orElse(null);
     }
 }
