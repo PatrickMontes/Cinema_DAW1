@@ -16,7 +16,6 @@ public class AsientoController {
     @Autowired
     private IAsientoService asientoService;
 
-    //localhost:8080/backoffice/listarAsientos
     @GetMapping("/listarAsientos")
     public String listarAsientos(Model model) {
         List<Asiento> asientos = asientoService.listarAsientos();
