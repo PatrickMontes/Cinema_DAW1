@@ -38,5 +38,10 @@ public class PeliculaService implements IPeliculaService {
         return peliculaOptional.orElse(null); // Retorna la película si está presente, de lo contrario, retorna null
     }
 
+    @Override
+    public List<Pelicula> listTop(int limit) {
+        return peliculaRepository.listarPeliculasTop(limit);
+    }
+
 
 }

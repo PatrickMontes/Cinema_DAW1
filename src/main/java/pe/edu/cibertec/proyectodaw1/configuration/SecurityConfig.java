@@ -30,11 +30,13 @@ public class SecurityConfig {
                                                 "/resources/**",
                                                 "/static/**",
                                                 "/css/**",
-                                                "/js/**"
+                                                "/js/**",
+                                                "/imagenes/**",
+                                                "/cinerama/**"
                                                 )
                                         .permitAll()
                                         .requestMatchers("/pelicula/**","/asiento/**","/listarSedes","/listarSalas").hasAnyAuthority("Administrador")
-                                        .requestMatchers("/inicio/**","/usuario/***").hasAnyAuthority("Usuario","Administrador")
+                                        .requestMatchers("/inicio/**","/usuario/***","/cinerama/**").hasAnyAuthority("Usuario","Administrador")
                                         .anyRequest()
                                         .authenticated()
                 )

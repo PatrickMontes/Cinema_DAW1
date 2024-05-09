@@ -14,5 +14,7 @@ public interface IPeliculaService {
 
     Pelicula buscarPeliculaPorId(Integer id);
 
+    List<Pelicula>listTop(int limit);
+
 
 }
