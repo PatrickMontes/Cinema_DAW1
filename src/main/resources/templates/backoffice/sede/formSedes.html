@@ -74,16 +74,6 @@
                         </div>
                     </a>
                 </li>
-                <li>
-                    <a href="/asiento/listarAsientos">
-                        <div class="icon">
-                            <ion-icon name="grid"></ion-icon>
-                        </div>
-                        <div class="text">
-                            <span>Asientos</span>
-                        </div>
-                    </a>
-                </li>
             </ul>
         </div>
 
@@ -105,9 +95,10 @@
     </div>
 
 
-    <button type="button" id="btnAgregarSede" class="btn btn-primary" data-toggle="modal" data-target="#agregarSedeModal">
-        Agregar Sede
-    </button>
+    <div class="table-container">
+        <button type="button" id="btnAgregarSede" class="btn btn-primary" data-toggle="modal" data-target="#agregarSedeModal">
+            Agregar Sede
+        </button>
         <br>
         <br>
 
@@ -244,30 +235,30 @@
     });
 
     let btnmenu = document.querySelector('.btn-menu');
-  let dsleftmenu = document.querySelector('.ds-left-menu');
-  let line = document.querySelector('.line');
-  let linetwo = document.querySelector('.line-two');
-  let infoperfil = document.querySelector('.info-perfil');
+    let dsleftmenu = document.querySelector('.ds-left-menu');
+    let line = document.querySelector('.line');
+    let linetwo = document.querySelector('.line-two');
+    let infoperfil = document.querySelector('.info-perfil');
 
-  btnmenu.onclick = function () {
-      btnmenu.classList.toggle('rotate');
-      dsleftmenu.classList.toggle('active');
-      line.classList.toggle('short');
-      linetwo.classList.toggle('short');
-      infoperfil.classList.toggle('hidden');
-  }
+    btnmenu.onclick = function () {
+        btnmenu.classList.toggle('rotate');
+        dsleftmenu.classList.toggle('active');
+        line.classList.toggle('short');
+        linetwo.classList.toggle('short');
+        infoperfil.classList.toggle('hidden');
+    }
 
-  let menulist = document.querySelectorAll('.ds-menu ul li');
-  function activeLink() {
+    let menulist = document.querySelectorAll('.ds-menu ul li');
+    function activeLink() {
 
-      menulist.forEach((item) =>
-          item.classList.remove('active'));
-      this.classList.add('active')
-  }
+        menulist.forEach((item) =>
+            item.classList.remove('active'));
+        this.classList.add('active')
+    }
 
 
-  menulist.forEach((item) =>
-      item.addEventListener('click', activeLink));
+    menulist.forEach((item) =>
+        item.addEventListener('click', activeLink));
 
 </script>
 
