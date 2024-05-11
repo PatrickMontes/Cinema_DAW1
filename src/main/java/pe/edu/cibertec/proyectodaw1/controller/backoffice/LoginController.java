@@ -27,9 +27,20 @@ public class LoginController {
         UserDetails userDetails = (UserDetails) SecurityContextHolder
                 .getContext().getAuthentication().getPrincipal();
         UsuarioSecurity usuarioSecurity = (UsuarioSecurity) userDetails;
+
         session.setAttribute("nomusuario", usuarioSecurity.getNombre());
         session.setAttribute("nomrol",usuarioSecurity.getAuthorities());
-        return "redirect:/inicio/index";
+
+        String nombreRol = usuarioSecurity.getAuthorities().iterator().next().getAuthority();
+
+
+        if (nombreRol.equals("Administrador")) {
+            return "redirect:/inicio/index";
+        } else {
+            return "redirect:/cinerama/principal";
+        }
+
+
     }
     @GetMapping("/dashboard")
     public String dashboard(){
