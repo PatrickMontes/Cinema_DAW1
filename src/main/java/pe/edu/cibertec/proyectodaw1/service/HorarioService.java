@@ -1,6 +1,8 @@
-package pe.edu.cibertec.crudhorarios.Service;
+package pe.edu.cibertec.proyectodaw1.service;
 
-import pe.edu.cibertec.crudhorarios.Entidad.Horario;
+
+
+import pe.edu.cibertec.proyectodaw1.model.bd.Horario;
 
 import java.util.Date;
 import java.util.List;

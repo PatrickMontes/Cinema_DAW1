@@ -1,4 +1,4 @@
-package pe.edu.cibertec.crudhorarios.Entidad;
+package pe.edu.cibertec.proyectodaw1.model.bd;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;

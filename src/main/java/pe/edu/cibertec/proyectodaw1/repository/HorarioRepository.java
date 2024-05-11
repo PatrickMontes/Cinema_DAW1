@@ -1,9 +1,11 @@
-package pe.edu.cibertec.crudhorarios.Repository;
+package pe.edu.cibertec.proyectodaw1.repository;
+
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import pe.edu.cibertec.crudhorarios.Entidad.Horario;
+import pe.edu.cibertec.proyectodaw1.model.bd.Horario;
+
 
 import java.util.Date;
 import java.util.List;

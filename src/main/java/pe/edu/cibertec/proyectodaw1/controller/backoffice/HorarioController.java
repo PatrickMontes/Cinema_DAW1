@@ -1,19 +1,19 @@
-package pe.edu.cibertec.crudhorarios.Controlador;
+package pe.edu.cibertec.proyectodaw1.controller.backoffice;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import pe.edu.cibertec.crudhorarios.Entidad.Horario;
-import pe.edu.cibertec.crudhorarios.Entidad.Pelicula;
-import pe.edu.cibertec.crudhorarios.Entidad.Sala;
-import pe.edu.cibertec.crudhorarios.Entidad.Sede;
-import pe.edu.cibertec.crudhorarios.Service.HorarioService;
-import pe.edu.cibertec.crudhorarios.Service.PeliculaService;
-import pe.edu.cibertec.crudhorarios.Service.SalaService;
-import pe.edu.cibertec.crudhorarios.Service.SedeService;
+import pe.edu.cibertec.proyectodaw1.model.bd.Sala;
+import pe.edu.cibertec.proyectodaw1.model.bd.Sede;
+import pe.edu.cibertec.proyectodaw1.model.bd.Horario;
+import pe.edu.cibertec.proyectodaw1.model.bd.Pelicula;
+import pe.edu.cibertec.proyectodaw1.service.HorarioService;
+import pe.edu.cibertec.proyectodaw1.service.PeliculaService;
+import pe.edu.cibertec.proyectodaw1.service.SalaService;
+import pe.edu.cibertec.proyectodaw1.service.SedeService;
+
 
 import java.util.Date;
 import java.util.List;
@@ -36,7 +36,7 @@ public class HorarioController {
     @RequestMapping("/cargaSede")
     @ResponseBody
     public List<Sede> listaSede(){
-        return sedeService.listaSede();
+        return sedeService.listarSedes();
     }
 
     @RequestMapping("/cargaHorarios")
@@ -49,14 +49,14 @@ public class HorarioController {
     @RequestMapping("/cargaSala")
     @ResponseBody
     public List<Sala> listaSala(){
-        return salaService.listaSala();
+        return salaService.listarSalas();
     }
 
 
     @RequestMapping("/cargaPelicula")
     @ResponseBody
     public List<Pelicula> listaPelicula(){
-        return peliculaService.listaPelicula();
+        return peliculaService.listarPeliculas();
     }
 
 
@@ -64,7 +64,7 @@ public class HorarioController {
     public String consulta(Date filtro, HttpSession session){
         List<Horario> lista = horarioService.listaPorHorario(filtro);
         session.setAttribute("horarios", lista);
-        return "horarios";
+        return "backoffice/horarios/horarios";
     }
 
 
@@ -107,6 +107,6 @@ public class HorarioController {
     public String salida(HttpSession session){
         List<Horario> lista = horarioService.listaTodos();
         session.setAttribute("horarios", lista);
-        return "horarios";
+        return "backoffice/horarios/horarios";
     }
 }
