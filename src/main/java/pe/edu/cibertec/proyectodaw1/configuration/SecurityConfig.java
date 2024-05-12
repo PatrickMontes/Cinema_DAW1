@@ -35,7 +35,7 @@ public class SecurityConfig {
                                                 "/cinerama/**"
                                                 )
                                         .permitAll()
-                                        .requestMatchers("/pelicula/**","/asiento/**","/listarSedes","/listarSalas","/consultaCrudHorarios").hasAnyAuthority("Administrador")
+                                        .requestMatchers("/pelicula/**","/asiento/**","/listarSedes","/listarSalas","/consultaCrudHorarios","/pago/**").hasAnyAuthority("Administrador")
                                         .requestMatchers("/inicio/**","/usuario/***","/cinerama/**").hasAnyAuthority("Usuario","Administrador")
                                         .anyRequest()
                                         .authenticated()
